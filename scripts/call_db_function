@@ -1,0 +1,64 @@
+#!bin/bash
+
+source call_db_function_create.sh
+source call_db_function_insert.sh
+source call_db_function_select.sh
+source call_db_function_update.sh
+source call_db_function_delete.sh
+source call_db_function_drop.sh
+source call_db_function_help.sh
+
+case "$1" in
+
+	"--create")
+	if [ $# -ne 2 ]; then
+                help_and_exit
+        fi
+        shift
+	create $1
+	;;
+
+	"--insert")
+	if [ $# -ne 2 ]; then
+                help_and_exit
+        fi
+        shift
+	insert $1
+	;;
+
+	"--select")
+	if [ $# -ne 2 ]; then
+		help_and_exit
+	fi
+	shift
+	select $1
+	;;
+
+	"--update")
+	if [ $# -ne 2 ]; then
+		help_and_exit
+	fi
+	shift
+	update $1
+	;;
+
+	"--delete")
+	if [ $# -ne 2 ]; then
+		help_and_exit
+	fi
+	shift
+	delete $1
+	;;
+
+	"--drop")
+	if [ $# -ne 2 ]; then
+		help_and_exit
+	fi
+	shift
+	drop $1
+	;;
+
+	*)
+	help_and_exit
+	;;
+esac
