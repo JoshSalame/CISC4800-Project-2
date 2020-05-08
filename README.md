@@ -9,11 +9,11 @@
 - README.md  
 
 - *java*  
-  - Makefile -> compiles java files
+  - Makefile -> compiles java files. use [make clean] to remove .class files as well as test.db file.
   - SQLiteJDBC_connect.java -> creates a connection to test.db database  
   - SQLiteJDBC_createTable.java -> create table according to input: [tableName attName attType attName2 attType2 ...]  
   - SQLiteJDBC_delete.java -> deletes selected rows of table: [tableName WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.  
-  - SQLiteJDBC_drop.java -> drops selected tables: tableName1 tableName2 ...  
+  - SQLiteJDBC_drop.java -> drops selected tables: [tableName1 tableName2 ...]  
   - SQLiteJDBC_insert.java  -> inserts values into table: [tableName attName attValue attName2 attValue2 ...]  
   - SQLiteJDBC_select.java -> selects/displays selected columns and rows of table: [tableName attName attName2 ... WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.  
   - SQLiteJDBC_update.java -> updates values in table: [tableName attName attValue attName2 attValue2 ... WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.
@@ -31,3 +31,8 @@
   - call_db_function_update.sh  
 
 ### Instructions to assemble and run:  
+1. cd java/
+2. make
+3. either:
+  - create tables, insert, select, update, and delete as you like. Some functions like group by, order by, aggregate functions, etc not available.  
+  - use autofilled tables: [cd ..; cd scripts; ./autofill_db.sh;]. This will create a couple basic tables to play around with using insert, select, update, and delete. Drop and create are still available of course. 
