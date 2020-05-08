@@ -8,16 +8,16 @@
 
 - README.md  
 
-- *java*  
-  - Makefile -> compiles java files. use [make clean] to remove .class files as well as test.db file.
-  - SQLiteJDBC_connect.java -> creates a connection to test.db database  
-  - SQLiteJDBC_createTable.java -> create table according to input: [tableName attName attType attName2 attType2 ...]  
-  - SQLiteJDBC_delete.java -> deletes selected rows of table: [tableName WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.  
-  - SQLiteJDBC_drop.java -> drops selected tables: [tableName1 tableName2 ...]  
-  - SQLiteJDBC_insert.java  -> inserts values into table: [tableName attName attValue attName2 attValue2 ...]  
-  - SQLiteJDBC_select.java -> selects/displays selected columns and rows of table: [tableName attName attName2 ... WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.  
-  - SQLiteJDBC_update.java -> updates values in table: [tableName attName attValue attName2 attValue2 ... WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.
-  - sqlite-jdbc-3.30.1.jar -> used for connections
+- *java* [c = complete, i = incomplete, p = partially complete]
+  - [c] Makefile -> compiles java files. use [make clean] to remove .class files as well as test.db file.
+  - [c] SQLiteJDBC_connect.java -> creates a connection to test.db database (unnecessary)  
+  - [c] SQLiteJDBC_createTable.java -> create table according to input: [tableName attName attType attName2 attType2 ...]  
+  - [i] SQLiteJDBC_delete.java -> deletes selected rows of table: [tableName WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.  
+  - [i] SQLiteJDBC_drop.java -> drops selected tables: [tableName1 tableName2 ...]  
+  - [c] SQLiteJDBC_insert.java  -> inserts values into table: [tableName attName attValue attName2 attValue2 ...]  
+  - [i] SQLiteJDBC_select.java -> selects/displays selected columns and rows of table: [tableName attName attName2 ... WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.  
+  - [i] SQLiteJDBC_update.java -> updates values in table: [tableName attName attValue attName2 attValue2 ... WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.
+  - [c] sqlite-jdbc-3.30.1.jar -> used for connections
 
 - *scripts*  
   - autofill_db.sh
