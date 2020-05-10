@@ -13,7 +13,7 @@
   - [c] SQLiteJDBC_connect.java -> creates a connection to test.db database (unnecessary)  
   - [c] SQLiteJDBC_createTable.java -> create table according to input: [tableName attName attType attName2 attType2 ...]  
   - [i] SQLiteJDBC_delete.java -> deletes selected rows of table: [tableName WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.  
-  - [i] SQLiteJDBC_dropTables.java -> drops selected tables: [tableName1 tableName2 ...]. If given 0 arguments, does nothing and exits normally.
+  - [c] SQLiteJDBC_dropTables.java -> drops selected tables: [tableName1 tableName2 ...]. If given 0 arguments, does nothing and exits normally.
   - [c] SQLiteJDBC_insert.java  -> inserts values into table: [tableName attName attValue attName2 attValue2 ...]  
   - [i] SQLiteJDBC_select.java -> selects/displays selected columns and rows of table: [tableName attName attName2 ... WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.  
   - [i] SQLiteJDBC_update.java -> updates values in table: [tableName attName attValue attName2 attValue2 ... WHERE attName relationType value attName2 relationType2 value2 ...]. relationType includes =, <, >, etc. WHERE is optional.
