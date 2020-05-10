@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class SQLiteJDBC_create {
+public class SQLiteJDBC_createTable {
 
 	public static void main( String args[] ) {
 		Connection c = null;
