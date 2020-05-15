@@ -1,46 +1,99 @@
 import java.sql.*;
+import java.util.Scanner;
 
 public class SQLiteJDBC_update {
+	public static void main( String args[] ) {
+		Connection c = null;
+		Statement stmt = null;
 
-  public static void main( String args[] ) {
-  
-   Connection c = null;
-   Statement stmt = null;
-   
-   try {
-      Class.forName("org.sqlite.JDBC");
-      c = DriverManager.getConnection("jdbc:sqlite:test.db");
-      c.setAutoCommit(false);
-      System.out.println("Opened database successfully");
+		try {
+			Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection("jdbc:sqlite:test.db");
+			c.setAutoCommit(false);
 
-      stmt = c.createStatement();
-      String sql = "UPDATE COMPANY set SALARY = 25000.00 where ID=1;";
-      stmt.executeUpdate(sql);
-      c.commit();
+			stmt = c.createStatement();
+			
+			final int SIZE = args.length;
 
-      ResultSet rs = stmt.executeQuery( "SELECT * FROM COMPANY;" );
-      
-      while ( rs.next() ) {
-         int id = rs.getInt("id");
-         String  name = rs.getString("name");
-         int age  = rs.getInt("age");
-         String  address = rs.getString("address");
-         float salary = rs.getFloat("salary");
-         
-         System.out.println( "ID = " + id );
-         System.out.println( "NAME = " + name );
-         System.out.println( "AGE = " + age );
-         System.out.println( "ADDRESS = " + address );
-         System.out.println( "SALARY = " + salary );
-         System.out.println();
-      }
-      rs.close();
-      stmt.close();
-      c.close();
-   } catch ( Exception e ) {
-      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-      System.exit(0);
-   }
-    System.out.println("Operation done successfully");
-   }
+			String cmdArgsString = args[0];
+			for(int i = 1; i < SIZE; i++) {
+				cmdArgsString = cmdArgsString + " " + args[i];
+			}
+
+			//used to remove boundary logic for args;
+			Scanner cmdArgs = new Scanner(cmdArgsString);
+			Scanner cmdArgs2 = new Scanner(cmdArgsString);			
+                        
+			String tableName = cmdArgs.next();
+
+                        String[] attributes = new String[SIZE/2];
+			String[] values = new String[SIZE/2];
+
+			//if has where statement, declare and allocate arrays to hold input
+			boolean hasWhere = false;
+
+			//use attributeSize to keep track of args placement.
+			int attributeSize = 0, valueSize = 0;
+
+			//took an args that will be nulled, so we'll save that last one for later
+			String tempArg = "";
+                        while(cmdArgs.hasNext() && !hasWhere) {
+				attributes[attributeSize] = cmdArgs.next();
+				values[valueSize] = cmdArgs.next();
+				attributeSize++;
+				valueSize++;
+				//detect WHERE clause
+				if(attributes[attributeSize - 1].equalsIgnoreCase("WHERE") || values[valueSize - 1].equalsIgnoreCase("WHERE")) {
+                                        hasWhere = true;
+                                        //last attribute is WHERE, hence we delete it
+                                        attributes[attributeSize - 1] = null;
+                                        attributeSize--;
+					tempArg = values[valueSize - 1];
+					values[valueSize - 1] = null;
+                                        valueSize--;
+                                }
+                        }
+
+			String sql = "UPDATE " + tableName + " SET ";
+
+			//insert first attribute name and value to prevent an ending comma
+			sql = sql + attributes[0] + " = " + values[0];
+
+			//insert other attributes and values
+			for(int i = 1; (i < attributeSize) && (i < valueSize); i++) {
+				sql = sql + ", " + attributes[i] + " = " + values[i]; 
+			}
+
+			System.out.println("inserted att and values");
+
+//			for(String att : attributes) System.out.print(att + "\t");
+//			for(String val : values) System.out.print(val + "\t");
+
+
+			//if conditions exist, insert first condition for formatting
+			if(hasWhere) {
+				sql = sql + " WHERE ";
+				sql = sql + tempArg + " " + cmdArgs.next() + " " + cmdArgs.next();
+				System.out.println("inserted first condition");
+				while(cmdArgs.hasNext()) {
+					sql = sql + " " + cmdArgs.next() + " " + cmdArgs.next() + " " + cmdArgs.next() + " " + cmdArgs.next();
+				}
+			}
+
+			sql = sql + ";";
+
+			//print executing sql statement
+                        System.out.println(sql + "\n");
+
+			stmt.executeUpdate(sql);
+
+			stmt.close();
+			c.commit();
+			c.close();
+		}
+		catch (Exception e) {
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+			System.exit(0);
+		}
+	}
 }
