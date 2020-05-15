@@ -31,10 +31,10 @@
 ### Example use of programs:
 Notes: special characters like ", >, <, must be escaped with a backslash. This is shown in the below commands.
 
-cd java/;
-make;
-java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_connect;
-java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_createTable EMPLOYEES id NUMBER first VARCHAR last VARCHAR salary NUMBER bonus NUMBER;
-java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert EMPLOYEES id 1 first \\"John\\" last \\"Smith\\" salary 75000 bonus 3000;
-java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert EMPLOYEES id 2 first \\"Jane\\" last \\"Doe\\" salary 45000 bonus 0;
-java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_select EMPLOYEES id first last WHERE salary \> 50000;
+cd java/;  
+make;  
+java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_connect;  
+java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_createTable EMPLOYEES id NUMBER first VARCHAR last VARCHAR salary NUMBER bonus NUMBER;  
+java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert EMPLOYEES id 1 first \\"John\\" last \\"Smith\\" salary 75000 bonus 3000;  
+java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert EMPLOYEES id 2 first \\"Jane\\" last \\"Doe\\" salary 45000 bonus 0;  
+java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_select EMPLOYEES id first last WHERE salary \> 50000;  
