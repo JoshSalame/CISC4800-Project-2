@@ -1,7 +1,7 @@
 # CISC4800 Project 2  
 
-### Project Description:  
-
+### Project Description + Inspiration:  
+This project involves basic database connectivity topics, as well as CRUD functions. This is intended for general use, and includes an SQLite driver, a Makefile, and a script to autofill some basic data if wanted. The data itself contains an employee and address table with some sample data. This demonstrates how a small company based in Chicago, NYC, and San Francisco might choose to structure some basic employee data to support a payroll system.
 ### Files & Uses:  
 
 - README.md  
