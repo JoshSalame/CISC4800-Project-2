@@ -17,16 +17,8 @@
   - [c] SQLiteJDBC_update.java -> updates values in table: [tableName attName attValue attName2 attValue2 ... WHERE attName relationType value andor attName2 relationType2 value2 andor2 ...]. relationType includes =, <, >, etc. andor includes AND, OR, AND NOT, OR NOT (case insensitive). WHERE is optional. Only use andor if using an additional attName, relationType, and attValue.
   - [c] sqlite-jdbc-3.30.1.jar -> used for connections
 
-- *scripts* //May not do. There's not much point honestly aside from autofill. The others would just be calling the java files which you can just do manually. 
-  - autofill_db.sh
-  - call_db_function
-  - call_db_function_createTable.sh    
-  - call_db_function_delete.sh  
-  - call_db_function_drop.sh   
-  - call_db_function_help.sh  
-  - call_db_function_insert.sh  
-  - call_db_function_select.sh  
-  - call_db_function_update.sh  
+- *scripts*
+  - [c] autofill_db.sh -> Autofills EMPLOYEES and ADDRESS tables. Go to directory and then use [./autofill_db.sh] to run. In case of missing execute permission, run [chmod +x autofill_db.sh] first.
 
 ### Instructions to assemble and run:  
 1. cd java/
@@ -39,10 +31,10 @@
 ### Example use of programs:
 Notes: special characters like ", >, <, must be escaped with a backslash. This is shown in the below commands.
 
-1. cd java/
-2. make
-3. java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_connect
-4. java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_createTable COMPANY id number first varchar last varchar salary number bonus number
-5. java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert COMPANY id 1 first \"John\" last \"Smith\" salary 75000 bonus 3000
-6. java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert COMPANY id 2 first \"Jane\" last \"Doe\" salary 45000 bonus 0
-7. java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_select COMPANY id first last WHERE salary \> 50000
+cd java/;
+make;
+java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_connect;
+java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_createTable EMPLOYEES id NUMBER first VARCHAR last VARCHAR salary NUMBER bonus NUMBER;
+java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert EMPLOYEES id 1 first \\"John\\" last \\"Smith\\" salary 75000 bonus 3000;
+java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert EMPLOYEES id 2 first \\"Jane\\" last \\"Doe\\" salary 45000 bonus 0;
+java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_select EMPLOYEES id first last WHERE salary \> 50000;

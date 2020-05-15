@@ -1,6 +1,0 @@
-#!bin/bash
-
-function select() {
-
-}
-
