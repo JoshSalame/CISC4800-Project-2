@@ -13,7 +13,7 @@ java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_createTable EMPLOYEES id N
 java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_createTable ADDRESS id NUMBER street VARCHAR city VARCHAR state VARCHAR zip NUMBER
 
 #Insert Data
-echo -e "Inserting Data..."
+echo "Inserting Data..."
 #Insert into employee table
 java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert EMPLOYEES id 1 first \"John\" last \"Smith\" salary 75000 bonus 3000
 java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert EMPLOYEES id 2 first \"Jane\" last \"Doe\" salary 45000 bonus 0
