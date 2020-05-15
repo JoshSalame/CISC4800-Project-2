@@ -1,19 +1,19 @@
 !#bin/bash
 
-echo -e "Filling database with pre-made data."
+echo "Filling database with pre-made data."
 cd ../java;
 
 #Compile files
-echo -e "Compiling Files"
+echo "Compiling Files..."
 make;
 
 #Create Tables
-echo -e "Creating tables..."
+echo "Creating tables..."
 java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_createTable EMPLOYEES id NUMBER first VARCHAR last VARCHAR salary NUMBER bonus NUMBER
 java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_createTable ADDRESS id NUMBER street VARCHAR city VARCHAR state VARCHAR zip NUMBER
 
 #Insert Data
-echo -e "Inserting Data"
+echo -e "Inserting Data..."
 #Insert into employee table
 java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert EMPLOYEES id 1 first \"John\" last \"Smith\" salary 75000 bonus 3000
 java -classpath ".:sqlite-jdbc-3.30.1.jar" SQLiteJDBC_insert EMPLOYEES id 2 first \"Jane\" last \"Doe\" salary 45000 bonus 0
